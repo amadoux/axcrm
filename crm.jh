@@ -46,6 +46,7 @@ entity Employee {
      releaseDate Instant
      workstation String
      descriptionWorkstation String
+     department Department     
      level Level
      coefficient Long
      numberHours String
@@ -78,6 +79,15 @@ entity Contract {
     statusContract StatusContract
     uploadContract ImageBlob minbytes(3) maxbytes(1000) required
 }
+entity PaySlip {
+    /** fieldName */
+
+    
+    netSalaryPay Long
+    paySlipDate Instant
+    uploadPaySlip ImageBlob minbytes(3) maxbytes(1000)
+
+}
 
 enum Pays {
     CAMEROON , SENEGAL, COTE_IVOIRE, MALI
@@ -88,8 +98,11 @@ enum TypeEmployed {
 enum Level {
     A, B, C, D, E
 }
-  enum ContractType {
+enum ContractType {
     CDD, CDI, INTERN, APPRENTICE, COMMERCIAL_AGENT, EXTERNAL
+}
+enum Department {
+Production, Ventes, Marketing, Recherche_Developpement, Comptabilite_Finance, Ressources_Humaines, Service_Client, IT
 }
 enum SalaryType {
     EXECUTIVE_SALARIED, ASSOCIATE, NON_EXECUTIVE_SALARIED
@@ -98,7 +111,8 @@ enum SalaryType {
 
 // defining multiple OneToMany relationships with comments
 relationship ManyToOne {
-	
+
+PaySlip {employee(email)} to Employee
 Contract {employee(email)} to Employee   
 Employee{enterprise(companyName)} to Enterprise
 }
