@@ -1,5 +1,6 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mycompany.myapp.domain.enumeration.SPentType;
 import com.mycompany.myapp.domain.enumeration.StatusCharges;
 import jakarta.persistence.*;
@@ -47,6 +48,10 @@ public class SocialCharges implements Serializable {
     @Lob
     @Column(name = "comment_text", nullable = false)
     private String commentText;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
+    private Employee responsableDepense;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Enterprise enterprise;
@@ -142,6 +147,19 @@ public class SocialCharges implements Serializable {
 
     public void setCommentText(String commentText) {
         this.commentText = commentText;
+    }
+
+    public Employee getResponsableDepense() {
+        return this.responsableDepense;
+    }
+
+    public void setResponsableDepense(Employee employee) {
+        this.responsableDepense = employee;
+    }
+
+    public SocialCharges responsableDepense(Employee employee) {
+        this.setResponsableDepense(employee);
+        return this;
     }
 
     public Enterprise getEnterprise() {

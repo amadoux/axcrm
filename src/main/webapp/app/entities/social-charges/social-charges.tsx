@@ -139,6 +139,10 @@ export const SocialCharges = () => {
                   <FontAwesomeIcon icon={getSortIconByFieldName('commentText')} />
                 </th>
                 <th>
+                  <Translate contentKey="axcrmApp.socialCharges.responsableDepense">Responsable Depense</Translate>{' '}
+                  <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
                   <Translate contentKey="axcrmApp.socialCharges.enterprise">Enterprise</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
@@ -164,6 +168,13 @@ export const SocialCharges = () => {
                   <td>{socialCharges.amount}</td>
                   <td>{socialCharges.purchaseManager}</td>
                   <td>{socialCharges.commentText}</td>
+                  <td>
+                    {socialCharges.responsableDepense ? (
+                      <Link to={`/employee/${socialCharges.responsableDepense.id}`}>{socialCharges.responsableDepense.email}</Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td>
                     {socialCharges.enterprise ? (
                       <Link to={`/enterprise/${socialCharges.enterprise.id}`}>{socialCharges.enterprise.companyName}</Link>

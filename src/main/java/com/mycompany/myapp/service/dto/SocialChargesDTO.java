@@ -32,6 +32,8 @@ public class SocialChargesDTO implements Serializable {
     @Lob
     private String commentText;
 
+    private EmployeeDTO responsableDepense;
+
     private EnterpriseDTO enterprise;
 
     public Long getId() {
@@ -90,6 +92,14 @@ public class SocialChargesDTO implements Serializable {
         this.commentText = commentText;
     }
 
+    public EmployeeDTO getResponsableDepense() {
+        return responsableDepense;
+    }
+
+    public void setResponsableDepense(EmployeeDTO responsableDepense) {
+        this.responsableDepense = responsableDepense;
+    }
+
     public EnterpriseDTO getEnterprise() {
         return enterprise;
     }
@@ -130,6 +140,7 @@ public class SocialChargesDTO implements Serializable {
             ", amount=" + getAmount() +
             ", purchaseManager='" + getPurchaseManager() + "'" +
             ", commentText='" + getCommentText() + "'" +
+            ", responsableDepense=" + getResponsableDepense() +
             ", enterprise=" + getEnterprise() +
             "}";
     }

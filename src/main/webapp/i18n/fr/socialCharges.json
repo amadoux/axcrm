@@ -24,6 +24,7 @@
       "amount": "Amount",
       "purchaseManager": "Purchase Manager",
       "commentText": "Comment Text",
+      "responsableDepense": "Responsable Depense",
       "enterprise": "Enterprise"
     }
   }

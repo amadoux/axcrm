@@ -27,14 +27,18 @@ public interface SocialChargesRepository extends JpaRepository<SocialCharges, Lo
     }
 
     @Query(
-        value = "select socialCharges from SocialCharges socialCharges left join fetch socialCharges.enterprise",
+        value = "select socialCharges from SocialCharges socialCharges left join fetch socialCharges.responsableDepense left join fetch socialCharges.enterprise",
         countQuery = "select count(socialCharges) from SocialCharges socialCharges"
     )
     Page<SocialCharges> findAllWithToOneRelationships(Pageable pageable);
 
-    @Query("select socialCharges from SocialCharges socialCharges left join fetch socialCharges.enterprise")
+    @Query(
+        "select socialCharges from SocialCharges socialCharges left join fetch socialCharges.responsableDepense left join fetch socialCharges.enterprise"
+    )
     List<SocialCharges> findAllWithToOneRelationships();
 
-    @Query("select socialCharges from SocialCharges socialCharges left join fetch socialCharges.enterprise where socialCharges.id =:id")
+    @Query(
+        "select socialCharges from SocialCharges socialCharges left join fetch socialCharges.responsableDepense left join fetch socialCharges.enterprise where socialCharges.id =:id"
+    )
     Optional<SocialCharges> findOneWithToOneRelationships(@Param("id") Long id);
 }
