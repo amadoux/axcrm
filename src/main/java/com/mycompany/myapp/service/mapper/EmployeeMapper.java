@@ -1,7 +1,9 @@
 package com.mycompany.myapp.service.mapper;
 
 import com.mycompany.myapp.domain.Employee;
+import com.mycompany.myapp.domain.Enterprise;
 import com.mycompany.myapp.service.dto.EmployeeDTO;
+import com.mycompany.myapp.service.dto.EnterpriseDTO;
 import org.mapstruct.*;
 
 /**
@@ -9,11 +11,19 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface EmployeeMapper extends EntityMapper<EmployeeDTO, Employee> {
-    @Mapping(target = "employee", source = "employee", qualifiedByName = "employeeId")
+    @Mapping(target = "enterprise", source = "enterprise", qualifiedByName = "enterpriseCompanyName")
+    @Mapping(target = "employee", source = "employee", qualifiedByName = "employeeEmail")
     EmployeeDTO toDto(Employee s);
 
-    @Named("employeeId")
+    @Named("enterpriseCompanyName")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    EmployeeDTO toDtoEmployeeId(Employee employee);
+    @Mapping(target = "companyName", source = "companyName")
+    EnterpriseDTO toDtoEnterpriseCompanyName(Enterprise enterprise);
+
+    @Named("employeeEmail")
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "email", source = "email")
+    EmployeeDTO toDtoEmployeeEmail(Employee employee);
 }

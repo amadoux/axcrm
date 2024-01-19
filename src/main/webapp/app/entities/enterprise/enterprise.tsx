@@ -153,9 +153,6 @@ export const Enterprise = () => {
                   <Translate contentKey="axcrmApp.enterprise.mapLocator">Map Locator</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('mapLocator')} />
                 </th>
-                <th>
-                  <Translate contentKey="axcrmApp.enterprise.employee">Employee</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th />
               </tr>
             </thead>
@@ -213,7 +210,6 @@ export const Enterprise = () => {
                       </div>
                     ) : null}
                   </td>
-                  <td>{enterprise.employee ? <Link to={`/employee/${enterprise.employee.id}`}>{enterprise.employee.id}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/enterprise/${enterprise.id}`} color="info" size="sm" data-cy="entityDetailsButton">

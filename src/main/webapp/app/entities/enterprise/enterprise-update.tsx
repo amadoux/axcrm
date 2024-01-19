@@ -8,8 +8,6 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-import { IEmployee } from 'app/shared/model/employee.model';
-import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import { IEnterprise } from 'app/shared/model/enterprise.model';
 import { Pays } from 'app/shared/model/enumerations/pays.model';
 import { getEntity, updateEntity, createEntity, reset } from './enterprise.reducer';
@@ -22,7 +20,6 @@ export const EnterpriseUpdate = () => {
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
 
-  const employees = useAppSelector(state => state.employee.entities);
   const enterpriseEntity = useAppSelector(state => state.enterprise.entity);
   const loading = useAppSelector(state => state.enterprise.loading);
   const updating = useAppSelector(state => state.enterprise.updating);
@@ -39,8 +36,6 @@ export const EnterpriseUpdate = () => {
     } else {
       dispatch(getEntity(id));
     }
-
-    dispatch(getEmployees({}));
   }, []);
 
   useEffect(() => {
@@ -58,7 +53,6 @@ export const EnterpriseUpdate = () => {
     const entity = {
       ...enterpriseEntity,
       ...values,
-      employee: employees.find(it => it.id.toString() === values.employee.toString()),
     };
 
     if (isNew) {
@@ -74,7 +68,6 @@ export const EnterpriseUpdate = () => {
       : {
           country: 'CAMEROON',
           ...enterpriseEntity,
-          employee: enterpriseEntity?.employee?.id,
         };
 
   return (
@@ -198,22 +191,6 @@ export const EnterpriseUpdate = () => {
                 accept="image/*"
                 validate={{}}
               />
-              <ValidatedField
-                id="enterprise-employee"
-                name="employee"
-                data-cy="employee"
-                label={translate('axcrmApp.enterprise.employee')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {employees
-                  ? employees.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/enterprise" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

@@ -8,6 +8,8 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import { IEnterprise } from 'app/shared/model/enterprise.model';
+import { getEntities as getEnterprises } from 'app/entities/enterprise/enterprise.reducer';
 import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import { IEmployee } from 'app/shared/model/employee.model';
 import { Pays } from 'app/shared/model/enumerations/pays.model';
@@ -25,6 +27,7 @@ export const EmployeeUpdate = () => {
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
 
+  const enterprises = useAppSelector(state => state.enterprise.entities);
   const employees = useAppSelector(state => state.employee.entities);
   const employeeEntity = useAppSelector(state => state.employee.entity);
   const loading = useAppSelector(state => state.employee.loading);
@@ -47,6 +50,7 @@ export const EmployeeUpdate = () => {
       dispatch(getEntity(id));
     }
 
+    dispatch(getEnterprises({}));
     dispatch(getEmployees({}));
   }, []);
 
@@ -79,6 +83,7 @@ export const EmployeeUpdate = () => {
     const entity = {
       ...employeeEntity,
       ...values,
+      enterprise: enterprises.find(it => it.id.toString() === values.enterprise.toString()),
       employee: employees.find(it => it.id.toString() === values.employee.toString()),
     };
 
@@ -110,6 +115,7 @@ export const EmployeeUpdate = () => {
           entryDate: convertDateTimeFromServer(employeeEntity.entryDate),
           releaseDate: convertDateTimeFromServer(employeeEntity.releaseDate),
           hireDate: convertDateTimeFromServer(employeeEntity.hireDate),
+          enterprise: employeeEntity?.enterprise?.id,
           employee: employeeEntity?.employee?.id,
         };
 
@@ -374,6 +380,22 @@ export const EmployeeUpdate = () => {
                 placeholder="YYYY-MM-DD HH:mm"
               />
               <ValidatedField
+                id="employee-enterprise"
+                name="enterprise"
+                data-cy="enterprise"
+                label={translate('axcrmApp.employee.enterprise')}
+                type="select"
+              >
+                <option value="" key="0" />
+                {enterprises
+                  ? enterprises.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.companyName}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
+              <ValidatedField
                 id="employee-employee"
                 name="employee"
                 data-cy="employee"
@@ -384,7 +406,7 @@ export const EmployeeUpdate = () => {
                 {employees
                   ? employees.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
+                        {otherEntity.email}
                       </option>
                     ))
                   : null}

@@ -82,6 +82,8 @@ public class EmployeeDTO implements Serializable {
 
     private Instant hireDate;
 
+    private EnterpriseDTO enterprise;
+
     private EmployeeDTO employee;
 
     public Long getId() {
@@ -324,6 +326,14 @@ public class EmployeeDTO implements Serializable {
         this.hireDate = hireDate;
     }
 
+    public EnterpriseDTO getEnterprise() {
+        return enterprise;
+    }
+
+    public void setEnterprise(EnterpriseDTO enterprise) {
+        this.enterprise = enterprise;
+    }
+
     public EmployeeDTO getEmployee() {
         return employee;
     }
@@ -386,6 +396,7 @@ public class EmployeeDTO implements Serializable {
             ", contractType='" + getContractType() + "'" +
             ", salaryType='" + getSalaryType() + "'" +
             ", hireDate='" + getHireDate() + "'" +
+            ", enterprise=" + getEnterprise() +
             ", employee=" + getEmployee() +
             "}";
     }

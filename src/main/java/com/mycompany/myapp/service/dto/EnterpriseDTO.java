@@ -51,7 +51,6 @@ public class EnterpriseDTO implements Serializable {
     private byte[] mapLocator;
 
     private String mapLocatorContentType;
-    private EmployeeDTO employee;
 
     public Long getId() {
         return id;
@@ -157,14 +156,6 @@ public class EnterpriseDTO implements Serializable {
         this.mapLocatorContentType = mapLocatorContentType;
     }
 
-    public EmployeeDTO getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(EmployeeDTO employee) {
-        this.employee = employee;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -201,7 +192,6 @@ public class EnterpriseDTO implements Serializable {
             ", city='" + getCity() + "'" +
             ", businessLogo='" + getBusinessLogo() + "'" +
             ", mapLocator='" + getMapLocator() + "'" +
-            ", employee=" + getEmployee() +
             "}";
     }
 }

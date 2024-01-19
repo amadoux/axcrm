@@ -136,17 +136,25 @@
   "pagination": "pagination",
   "relationships": [
     {
-      "otherEntityField": "email",
-      "otherEntityName": "employee",
-      "relationshipName": "manager",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-many"
-    },
-    {
       "otherEntityField": "companyName",
       "otherEntityName": "enterprise",
       "relationshipName": "enterprise",
       "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "email",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "manager",
+      "relationshipName": "employee",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "manager",
+      "relationshipSide": "right",
       "relationshipType": "one-to-many"
     }
   ],

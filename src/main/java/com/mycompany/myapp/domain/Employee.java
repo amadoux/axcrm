@@ -128,19 +128,17 @@ public class Employee implements Serializable {
     @Column(name = "hire_date")
     private Instant hireDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "managers", "enterprises", "employee" }, allowSetters = true)
-    private Set<Employee> managers = new HashSet<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "employee" }, allowSetters = true)
-    private Set<Enterprise> enterprises = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Enterprise enterprise;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "managers", "enterprises", "employee" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
     private Employee employee;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
+    private Set<Employee> managers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -534,6 +532,32 @@ public class Employee implements Serializable {
         this.hireDate = hireDate;
     }
 
+    public Enterprise getEnterprise() {
+        return this.enterprise;
+    }
+
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    public Employee enterprise(Enterprise enterprise) {
+        this.setEnterprise(enterprise);
+        return this;
+    }
+
+    public Employee getEmployee() {
+        return this.employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Employee employee(Employee employee) {
+        this.setEmployee(employee);
+        return this;
+    }
+
     public Set<Employee> getManagers() {
         return this.managers;
     }
@@ -562,50 +586,6 @@ public class Employee implements Serializable {
     public Employee removeManager(Employee employee) {
         this.managers.remove(employee);
         employee.setEmployee(null);
-        return this;
-    }
-
-    public Set<Enterprise> getEnterprises() {
-        return this.enterprises;
-    }
-
-    public void setEnterprises(Set<Enterprise> enterprises) {
-        if (this.enterprises != null) {
-            this.enterprises.forEach(i -> i.setEmployee(null));
-        }
-        if (enterprises != null) {
-            enterprises.forEach(i -> i.setEmployee(this));
-        }
-        this.enterprises = enterprises;
-    }
-
-    public Employee enterprises(Set<Enterprise> enterprises) {
-        this.setEnterprises(enterprises);
-        return this;
-    }
-
-    public Employee addEnterprise(Enterprise enterprise) {
-        this.enterprises.add(enterprise);
-        enterprise.setEmployee(this);
-        return this;
-    }
-
-    public Employee removeEnterprise(Enterprise enterprise) {
-        this.enterprises.remove(enterprise);
-        enterprise.setEmployee(null);
-        return this;
-    }
-
-    public Employee getEmployee() {
-        return this.employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Employee employee(Employee employee) {
-        this.setEmployee(employee);
         return this;
     }
 

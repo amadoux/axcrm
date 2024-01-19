@@ -80,10 +80,13 @@ enum SalaryType {
 
 
 // defining multiple OneToMany relationships with comments
-relationship OneToMany {
+relationship ManyToOne {
 	
-    Employee{manager(email)} to Employee
-    Employee{enterprise(companyName)} to Enterprise
+   
+Employee{enterprise(companyName)} to Enterprise
+}
+relationship ManyToOne {
+ Employee{employee(email)} to Employee {manager}
 }
 
 

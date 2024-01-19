@@ -27,6 +27,30 @@ class EmployeeTest {
     }
 
     @Test
+    void enterpriseTest() throws Exception {
+        Employee employee = getEmployeeRandomSampleGenerator();
+        Enterprise enterpriseBack = getEnterpriseRandomSampleGenerator();
+
+        employee.setEnterprise(enterpriseBack);
+        assertThat(employee.getEnterprise()).isEqualTo(enterpriseBack);
+
+        employee.enterprise(null);
+        assertThat(employee.getEnterprise()).isNull();
+    }
+
+    @Test
+    void employeeTest() throws Exception {
+        Employee employee = getEmployeeRandomSampleGenerator();
+        Employee employeeBack = getEmployeeRandomSampleGenerator();
+
+        employee.setEmployee(employeeBack);
+        assertThat(employee.getEmployee()).isEqualTo(employeeBack);
+
+        employee.employee(null);
+        assertThat(employee.getEmployee()).isNull();
+    }
+
+    @Test
     void managerTest() throws Exception {
         Employee employee = getEmployeeRandomSampleGenerator();
         Employee employeeBack = getEmployeeRandomSampleGenerator();
@@ -46,39 +70,5 @@ class EmployeeTest {
         employee.setManagers(new HashSet<>());
         assertThat(employee.getManagers()).doesNotContain(employeeBack);
         assertThat(employeeBack.getEmployee()).isNull();
-    }
-
-    @Test
-    void enterpriseTest() throws Exception {
-        Employee employee = getEmployeeRandomSampleGenerator();
-        Enterprise enterpriseBack = getEnterpriseRandomSampleGenerator();
-
-        employee.addEnterprise(enterpriseBack);
-        assertThat(employee.getEnterprises()).containsOnly(enterpriseBack);
-        assertThat(enterpriseBack.getEmployee()).isEqualTo(employee);
-
-        employee.removeEnterprise(enterpriseBack);
-        assertThat(employee.getEnterprises()).doesNotContain(enterpriseBack);
-        assertThat(enterpriseBack.getEmployee()).isNull();
-
-        employee.enterprises(new HashSet<>(Set.of(enterpriseBack)));
-        assertThat(employee.getEnterprises()).containsOnly(enterpriseBack);
-        assertThat(enterpriseBack.getEmployee()).isEqualTo(employee);
-
-        employee.setEnterprises(new HashSet<>());
-        assertThat(employee.getEnterprises()).doesNotContain(enterpriseBack);
-        assertThat(enterpriseBack.getEmployee()).isNull();
-    }
-
-    @Test
-    void employeeTest() throws Exception {
-        Employee employee = getEmployeeRandomSampleGenerator();
-        Employee employeeBack = getEmployeeRandomSampleGenerator();
-
-        employee.setEmployee(employeeBack);
-        assertThat(employee.getEmployee()).isEqualTo(employeeBack);
-
-        employee.employee(null);
-        assertThat(employee.getEmployee()).isNull();
     }
 }

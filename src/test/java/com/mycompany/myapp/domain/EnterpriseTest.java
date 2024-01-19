@@ -1,6 +1,5 @@
 package com.mycompany.myapp.domain;
 
-import static com.mycompany.myapp.domain.EmployeeTestSamples.*;
 import static com.mycompany.myapp.domain.EnterpriseTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,17 +20,5 @@ class EnterpriseTest {
 
         enterprise2 = getEnterpriseSample2();
         assertThat(enterprise1).isNotEqualTo(enterprise2);
-    }
-
-    @Test
-    void employeeTest() throws Exception {
-        Enterprise enterprise = getEnterpriseRandomSampleGenerator();
-        Employee employeeBack = getEmployeeRandomSampleGenerator();
-
-        enterprise.setEmployee(employeeBack);
-        assertThat(enterprise.getEmployee()).isEqualTo(employeeBack);
-
-        enterprise.employee(null);
-        assertThat(enterprise.getEmployee()).isNull();
     }
 }

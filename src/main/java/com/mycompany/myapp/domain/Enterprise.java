@@ -1,6 +1,5 @@
 package com.mycompany.myapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mycompany.myapp.domain.enumeration.Pays;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -72,10 +71,6 @@ public class Enterprise implements Serializable {
 
     @Column(name = "map_locator_content_type")
     private String mapLocatorContentType;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "managers", "enterprises", "employee" }, allowSetters = true)
-    private Employee employee;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -246,19 +241,6 @@ public class Enterprise implements Serializable {
 
     public void setMapLocatorContentType(String mapLocatorContentType) {
         this.mapLocatorContentType = mapLocatorContentType;
-    }
-
-    public Employee getEmployee() {
-        return this.employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Enterprise employee(Employee employee) {
-        this.setEmployee(employee);
-        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
