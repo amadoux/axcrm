@@ -146,6 +146,7 @@ enum SalaryType {
 
 // defining multiple OneToMany relationships with comments
 relationship ManyToOne {
+ SocialCharges {ResponsableDepense(email)} to Employee
 SocialCharges {enterprise(companyName)} to Enterprise
 Absence {employee(email)} to Employee
 PaySlip {employee(email)} to Employee
