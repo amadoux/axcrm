@@ -53,6 +53,8 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.Employee.class.getName() + ".managers");
             createCache(cm, com.mycompany.myapp.domain.Employee.class.getName() + ".enterprises");
             createCache(cm, com.mycompany.myapp.domain.Contract.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PaySlip.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Absence.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { IEnterprise } from 'app/shared/model/enterprise.model';
 import { Pays } from 'app/shared/model/enumerations/pays.model';
 import { TypeEmployed } from 'app/shared/model/enumerations/type-employed.model';
+import { Department } from 'app/shared/model/enumerations/department.model';
 import { Level } from 'app/shared/model/enumerations/level.model';
 import { ContractType } from 'app/shared/model/enumerations/contract-type.model';
 import { SalaryType } from 'app/shared/model/enumerations/salary-type.model';
@@ -28,6 +29,7 @@ export interface IEmployee {
   releaseDate?: dayjs.Dayjs | null;
   workstation?: string | null;
   descriptionWorkstation?: string | null;
+  department?: keyof typeof Department | null;
   level?: keyof typeof Level | null;
   coefficient?: number | null;
   numberHours?: string | null;

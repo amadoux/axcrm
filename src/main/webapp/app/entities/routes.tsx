@@ -6,6 +6,8 @@ import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
 import Enterprise from './enterprise';
 import Employee from './employee';
 import Contract from './contract';
+import PaySlip from './pay-slip';
+import Absence from './absence';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 export default () => {
@@ -16,6 +18,8 @@ export default () => {
         <Route path="enterprise/*" element={<Enterprise />} />
         <Route path="employee/*" element={<Employee />} />
         <Route path="contract/*" element={<Contract />} />
+        <Route path="pay-slip/*" element={<PaySlip />} />
+        <Route path="absence/*" element={<Absence />} />
         {/* jhipster-needle-add-route-path - JHipster will add routes here */}
       </ErrorBoundaryRoutes>
     </div>
