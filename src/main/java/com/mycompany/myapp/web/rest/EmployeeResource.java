@@ -141,12 +141,21 @@ public class EmployeeResource {
      * {@code GET  /employees} : get all the employees.
      *
      * @param pageable the pagination information.
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of employees in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(@org.springdoc.core.annotations.ParameterObject Pageable pageable) {
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(
+        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
+        @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
+    ) {
         log.debug("REST request to get a page of Employees");
-        Page<EmployeeDTO> page = employeeService.findAll(pageable);
+        Page<EmployeeDTO> page;
+        if (eagerload) {
+            page = employeeService.findAllWithEagerRelationships(pageable);
+        } else {
+            page = employeeService.findAll(pageable);
+        }
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

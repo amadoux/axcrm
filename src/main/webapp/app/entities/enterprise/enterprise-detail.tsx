@@ -126,10 +126,6 @@ export const EnterpriseDetail = () => {
               </div>
             ) : null}
           </dd>
-          <dt>
-            <Translate contentKey="axcrmApp.enterprise.employee">Employee</Translate>
-          </dt>
-          <dd>{enterpriseEntity.employee ? enterpriseEntity.employee.id : ''}</dd>
         </dl>
         <Button tag={Link} to="/enterprise" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

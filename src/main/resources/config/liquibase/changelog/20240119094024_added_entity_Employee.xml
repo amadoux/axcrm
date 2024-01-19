@@ -101,6 +101,9 @@
             <column name="hire_date" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
+            <column name="enterprise_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="employee_id" type="bigint">
                 <constraints nullable="true" />
             </column>

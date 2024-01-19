@@ -28,7 +28,6 @@
       "city": "City",
       "businessLogo": "Business Logo",
       "mapLocator": "Map Locator",
-      "employee": "Employee",
       "help": {
         "companyName": "fieldName"
       }

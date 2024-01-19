@@ -220,9 +220,13 @@ export const EmployeeDetail = () => {
           </dt>
           <dd>{employeeEntity.hireDate ? <TextFormat value={employeeEntity.hireDate} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
           <dt>
+            <Translate contentKey="axcrmApp.employee.enterprise">Enterprise</Translate>
+          </dt>
+          <dd>{employeeEntity.enterprise ? employeeEntity.enterprise.companyName : ''}</dd>
+          <dt>
             <Translate contentKey="axcrmApp.employee.employee">Employee</Translate>
           </dt>
-          <dd>{employeeEntity.employee ? employeeEntity.employee.id : ''}</dd>
+          <dd>{employeeEntity.employee ? employeeEntity.employee.email : ''}</dd>
         </dl>
         <Button tag={Link} to="/employee" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

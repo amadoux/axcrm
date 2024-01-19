@@ -37,9 +37,9 @@ export interface IEmployee {
   contractType?: keyof typeof ContractType | null;
   salaryType?: keyof typeof SalaryType | null;
   hireDate?: dayjs.Dayjs | null;
-  managers?: IEmployee[] | null;
-  enterprises?: IEnterprise[] | null;
+  enterprise?: IEnterprise | null;
   employee?: IEmployee | null;
+  managers?: IEmployee[] | null;
 }
 
 export const defaultValue: Readonly<IEmployee> = {};

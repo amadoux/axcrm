@@ -227,6 +227,9 @@ export const Employee = () => {
                   <FontAwesomeIcon icon={getSortIconByFieldName('hireDate')} />
                 </th>
                 <th>
+                  <Translate contentKey="axcrmApp.employee.enterprise">Enterprise</Translate> <FontAwesomeIcon icon="sort" />
+                </th>
+                <th>
                   <Translate contentKey="axcrmApp.employee.employee">Employee</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
@@ -294,7 +297,10 @@ export const Employee = () => {
                     <Translate contentKey={`axcrmApp.SalaryType.${employee.salaryType}`} />
                   </td>
                   <td>{employee.hireDate ? <TextFormat type="date" value={employee.hireDate} format={APP_DATE_FORMAT} /> : null}</td>
-                  <td>{employee.employee ? <Link to={`/employee/${employee.employee.id}`}>{employee.employee.id}</Link> : ''}</td>
+                  <td>
+                    {employee.enterprise ? <Link to={`/enterprise/${employee.enterprise.id}`}>{employee.enterprise.companyName}</Link> : ''}
+                  </td>
+                  <td>{employee.employee ? <Link to={`/employee/${employee.employee.id}`}>{employee.employee.email}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/employee/${employee.id}`} color="info" size="sm" data-cy="entityDetailsButton">
