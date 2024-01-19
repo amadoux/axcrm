@@ -1,0 +1,155 @@
+{
+  "annotations": {
+    "changelogDate": "20240119094024"
+  },
+  "applications": "*",
+  "documentation": "The Employee entity.",
+  "dto": "mapstruct",
+  "entityTableName": "employee",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "identityCard",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateInspiration",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "Pays",
+      "fieldValues": "CAMEROON,SENEGAL,COTE_IVOIRE,MALI"
+    },
+    {
+      "fieldName": "uploadIdentityCard",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["minbytes", "maxbytes"],
+      "fieldValidateRulesMaxbytes": "1000",
+      "fieldValidateRulesMinbytes": "3"
+    },
+    {
+      "fieldName": "typeEmployed",
+      "fieldType": "TypeEmployed",
+      "fieldValues": "MARKETER,SALARY,CONSULTANT"
+    },
+    {
+      "fieldName": "cityAgency",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "residenceCity",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "socialSecurityNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "birthDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "birthPlace",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "entryDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "releaseDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "workstation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descriptionWorkstation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "Level",
+      "fieldValues": "A,B,C,D,E"
+    },
+    {
+      "fieldName": "coefficient",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "numberHours",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "averageHourlyCost",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "monthlyGrossAmount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "commissionAmount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contractType",
+      "fieldType": "ContractType",
+      "fieldValues": "CDD,CDI,INTERN,APPRENTICE,COMMERCIAL_AGENT,EXTERNAL"
+    },
+    {
+      "fieldName": "salaryType",
+      "fieldType": "SalaryType",
+      "fieldValues": "EXECUTIVE_SALARIED,ASSOCIATE,NON_EXECUTIVE_SALARIED"
+    },
+    {
+      "fieldName": "hireDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Employee",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "email",
+      "otherEntityName": "employee",
+      "relationshipName": "manager",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "companyName",
+      "otherEntityName": "enterprise",
+      "relationshipName": "enterprise",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
