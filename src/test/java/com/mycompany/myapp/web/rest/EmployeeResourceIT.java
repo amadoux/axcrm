@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.Employee;
 import com.mycompany.myapp.domain.enumeration.ContractType;
+import com.mycompany.myapp.domain.enumeration.Department;
 import com.mycompany.myapp.domain.enumeration.Level;
 import com.mycompany.myapp.domain.enumeration.Pays;
 import com.mycompany.myapp.domain.enumeration.SalaryType;
@@ -107,6 +108,9 @@ class EmployeeResourceIT {
     private static final String DEFAULT_DESCRIPTION_WORKSTATION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION_WORKSTATION = "BBBBBBBBBB";
 
+    private static final Department DEFAULT_DEPARTMENT = Department.Production;
+    private static final Department UPDATED_DEPARTMENT = Department.Ventes;
+
     private static final Level DEFAULT_LEVEL = Level.A;
     private static final Level UPDATED_LEVEL = Level.B;
 
@@ -188,6 +192,7 @@ class EmployeeResourceIT {
             .releaseDate(DEFAULT_RELEASE_DATE)
             .workstation(DEFAULT_WORKSTATION)
             .descriptionWorkstation(DEFAULT_DESCRIPTION_WORKSTATION)
+            .department(DEFAULT_DEPARTMENT)
             .level(DEFAULT_LEVEL)
             .coefficient(DEFAULT_COEFFICIENT)
             .numberHours(DEFAULT_NUMBER_HOURS)
@@ -228,6 +233,7 @@ class EmployeeResourceIT {
             .releaseDate(UPDATED_RELEASE_DATE)
             .workstation(UPDATED_WORKSTATION)
             .descriptionWorkstation(UPDATED_DESCRIPTION_WORKSTATION)
+            .department(UPDATED_DEPARTMENT)
             .level(UPDATED_LEVEL)
             .coefficient(UPDATED_COEFFICIENT)
             .numberHours(UPDATED_NUMBER_HOURS)
@@ -279,6 +285,7 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getReleaseDate()).isEqualTo(DEFAULT_RELEASE_DATE);
         assertThat(testEmployee.getWorkstation()).isEqualTo(DEFAULT_WORKSTATION);
         assertThat(testEmployee.getDescriptionWorkstation()).isEqualTo(DEFAULT_DESCRIPTION_WORKSTATION);
+        assertThat(testEmployee.getDepartment()).isEqualTo(DEFAULT_DEPARTMENT);
         assertThat(testEmployee.getLevel()).isEqualTo(DEFAULT_LEVEL);
         assertThat(testEmployee.getCoefficient()).isEqualTo(DEFAULT_COEFFICIENT);
         assertThat(testEmployee.getNumberHours()).isEqualTo(DEFAULT_NUMBER_HOURS);
@@ -397,6 +404,7 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.[*].releaseDate").value(hasItem(DEFAULT_RELEASE_DATE.toString())))
             .andExpect(jsonPath("$.[*].workstation").value(hasItem(DEFAULT_WORKSTATION)))
             .andExpect(jsonPath("$.[*].descriptionWorkstation").value(hasItem(DEFAULT_DESCRIPTION_WORKSTATION)))
+            .andExpect(jsonPath("$.[*].department").value(hasItem(DEFAULT_DEPARTMENT.toString())))
             .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL.toString())))
             .andExpect(jsonPath("$.[*].coefficient").value(hasItem(DEFAULT_COEFFICIENT.intValue())))
             .andExpect(jsonPath("$.[*].numberHours").value(hasItem(DEFAULT_NUMBER_HOURS)))
@@ -457,6 +465,7 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.releaseDate").value(DEFAULT_RELEASE_DATE.toString()))
             .andExpect(jsonPath("$.workstation").value(DEFAULT_WORKSTATION))
             .andExpect(jsonPath("$.descriptionWorkstation").value(DEFAULT_DESCRIPTION_WORKSTATION))
+            .andExpect(jsonPath("$.department").value(DEFAULT_DEPARTMENT.toString()))
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL.toString()))
             .andExpect(jsonPath("$.coefficient").value(DEFAULT_COEFFICIENT.intValue()))
             .andExpect(jsonPath("$.numberHours").value(DEFAULT_NUMBER_HOURS))
@@ -508,6 +517,7 @@ class EmployeeResourceIT {
             .releaseDate(UPDATED_RELEASE_DATE)
             .workstation(UPDATED_WORKSTATION)
             .descriptionWorkstation(UPDATED_DESCRIPTION_WORKSTATION)
+            .department(UPDATED_DEPARTMENT)
             .level(UPDATED_LEVEL)
             .coefficient(UPDATED_COEFFICIENT)
             .numberHours(UPDATED_NUMBER_HOURS)
@@ -551,6 +561,7 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getReleaseDate()).isEqualTo(UPDATED_RELEASE_DATE);
         assertThat(testEmployee.getWorkstation()).isEqualTo(UPDATED_WORKSTATION);
         assertThat(testEmployee.getDescriptionWorkstation()).isEqualTo(UPDATED_DESCRIPTION_WORKSTATION);
+        assertThat(testEmployee.getDepartment()).isEqualTo(UPDATED_DEPARTMENT);
         assertThat(testEmployee.getLevel()).isEqualTo(UPDATED_LEVEL);
         assertThat(testEmployee.getCoefficient()).isEqualTo(UPDATED_COEFFICIENT);
         assertThat(testEmployee.getNumberHours()).isEqualTo(UPDATED_NUMBER_HOURS);
@@ -640,26 +651,20 @@ class EmployeeResourceIT {
         partialUpdatedEmployee.setId(employee.getId());
 
         partialUpdatedEmployee
-            .firstName(UPDATED_FIRST_NAME)
-            .lastName(UPDATED_LAST_NAME)
-            .email(UPDATED_EMAIL)
             .identityCard(UPDATED_IDENTITY_CARD)
             .dateInspiration(UPDATED_DATE_INSPIRATION)
             .nationality(UPDATED_NATIONALITY)
-            .uploadIdentityCard(UPDATED_UPLOAD_IDENTITY_CARD)
-            .uploadIdentityCardContentType(UPDATED_UPLOAD_IDENTITY_CARD_CONTENT_TYPE)
+            .typeEmployed(UPDATED_TYPE_EMPLOYED)
             .cityAgency(UPDATED_CITY_AGENCY)
-            .residenceCity(UPDATED_RESIDENCE_CITY)
+            .address(UPDATED_ADDRESS)
             .birthPlace(UPDATED_BIRTH_PLACE)
             .releaseDate(UPDATED_RELEASE_DATE)
-            .workstation(UPDATED_WORKSTATION)
-            .descriptionWorkstation(UPDATED_DESCRIPTION_WORKSTATION)
+            .department(UPDATED_DEPARTMENT)
             .level(UPDATED_LEVEL)
+            .coefficient(UPDATED_COEFFICIENT)
             .numberHours(UPDATED_NUMBER_HOURS)
-            .monthlyGrossAmount(UPDATED_MONTHLY_GROSS_AMOUNT)
-            .commissionAmount(UPDATED_COMMISSION_AMOUNT)
-            .salaryType(UPDATED_SALARY_TYPE)
-            .hireDate(UPDATED_HIRE_DATE);
+            .averageHourlyCost(UPDATED_AVERAGE_HOURLY_COST)
+            .monthlyGrossAmount(UPDATED_MONTHLY_GROSS_AMOUNT);
 
         restEmployeeMockMvc
             .perform(
@@ -673,35 +678,36 @@ class EmployeeResourceIT {
         List<Employee> employeeList = employeeRepository.findAll();
         assertThat(employeeList).hasSize(databaseSizeBeforeUpdate);
         Employee testEmployee = employeeList.get(employeeList.size() - 1);
-        assertThat(testEmployee.getFirstName()).isEqualTo(UPDATED_FIRST_NAME);
-        assertThat(testEmployee.getLastName()).isEqualTo(UPDATED_LAST_NAME);
-        assertThat(testEmployee.getEmail()).isEqualTo(UPDATED_EMAIL);
+        assertThat(testEmployee.getFirstName()).isEqualTo(DEFAULT_FIRST_NAME);
+        assertThat(testEmployee.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
+        assertThat(testEmployee.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testEmployee.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
         assertThat(testEmployee.getIdentityCard()).isEqualTo(UPDATED_IDENTITY_CARD);
         assertThat(testEmployee.getDateInspiration()).isEqualTo(UPDATED_DATE_INSPIRATION);
         assertThat(testEmployee.getNationality()).isEqualTo(UPDATED_NATIONALITY);
-        assertThat(testEmployee.getUploadIdentityCard()).isEqualTo(UPDATED_UPLOAD_IDENTITY_CARD);
-        assertThat(testEmployee.getUploadIdentityCardContentType()).isEqualTo(UPDATED_UPLOAD_IDENTITY_CARD_CONTENT_TYPE);
-        assertThat(testEmployee.getTypeEmployed()).isEqualTo(DEFAULT_TYPE_EMPLOYED);
+        assertThat(testEmployee.getUploadIdentityCard()).isEqualTo(DEFAULT_UPLOAD_IDENTITY_CARD);
+        assertThat(testEmployee.getUploadIdentityCardContentType()).isEqualTo(DEFAULT_UPLOAD_IDENTITY_CARD_CONTENT_TYPE);
+        assertThat(testEmployee.getTypeEmployed()).isEqualTo(UPDATED_TYPE_EMPLOYED);
         assertThat(testEmployee.getCityAgency()).isEqualTo(UPDATED_CITY_AGENCY);
-        assertThat(testEmployee.getResidenceCity()).isEqualTo(UPDATED_RESIDENCE_CITY);
-        assertThat(testEmployee.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testEmployee.getResidenceCity()).isEqualTo(DEFAULT_RESIDENCE_CITY);
+        assertThat(testEmployee.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testEmployee.getSocialSecurityNumber()).isEqualTo(DEFAULT_SOCIAL_SECURITY_NUMBER);
         assertThat(testEmployee.getBirthDate()).isEqualTo(DEFAULT_BIRTH_DATE);
         assertThat(testEmployee.getBirthPlace()).isEqualTo(UPDATED_BIRTH_PLACE);
         assertThat(testEmployee.getEntryDate()).isEqualTo(DEFAULT_ENTRY_DATE);
         assertThat(testEmployee.getReleaseDate()).isEqualTo(UPDATED_RELEASE_DATE);
-        assertThat(testEmployee.getWorkstation()).isEqualTo(UPDATED_WORKSTATION);
-        assertThat(testEmployee.getDescriptionWorkstation()).isEqualTo(UPDATED_DESCRIPTION_WORKSTATION);
+        assertThat(testEmployee.getWorkstation()).isEqualTo(DEFAULT_WORKSTATION);
+        assertThat(testEmployee.getDescriptionWorkstation()).isEqualTo(DEFAULT_DESCRIPTION_WORKSTATION);
+        assertThat(testEmployee.getDepartment()).isEqualTo(UPDATED_DEPARTMENT);
         assertThat(testEmployee.getLevel()).isEqualTo(UPDATED_LEVEL);
-        assertThat(testEmployee.getCoefficient()).isEqualTo(DEFAULT_COEFFICIENT);
+        assertThat(testEmployee.getCoefficient()).isEqualTo(UPDATED_COEFFICIENT);
         assertThat(testEmployee.getNumberHours()).isEqualTo(UPDATED_NUMBER_HOURS);
-        assertThat(testEmployee.getAverageHourlyCost()).isEqualTo(DEFAULT_AVERAGE_HOURLY_COST);
+        assertThat(testEmployee.getAverageHourlyCost()).isEqualTo(UPDATED_AVERAGE_HOURLY_COST);
         assertThat(testEmployee.getMonthlyGrossAmount()).isEqualTo(UPDATED_MONTHLY_GROSS_AMOUNT);
-        assertThat(testEmployee.getCommissionAmount()).isEqualTo(UPDATED_COMMISSION_AMOUNT);
+        assertThat(testEmployee.getCommissionAmount()).isEqualTo(DEFAULT_COMMISSION_AMOUNT);
         assertThat(testEmployee.getContractType()).isEqualTo(DEFAULT_CONTRACT_TYPE);
-        assertThat(testEmployee.getSalaryType()).isEqualTo(UPDATED_SALARY_TYPE);
-        assertThat(testEmployee.getHireDate()).isEqualTo(UPDATED_HIRE_DATE);
+        assertThat(testEmployee.getSalaryType()).isEqualTo(DEFAULT_SALARY_TYPE);
+        assertThat(testEmployee.getHireDate()).isEqualTo(DEFAULT_HIRE_DATE);
     }
 
     @Test
@@ -737,6 +743,7 @@ class EmployeeResourceIT {
             .releaseDate(UPDATED_RELEASE_DATE)
             .workstation(UPDATED_WORKSTATION)
             .descriptionWorkstation(UPDATED_DESCRIPTION_WORKSTATION)
+            .department(UPDATED_DEPARTMENT)
             .level(UPDATED_LEVEL)
             .coefficient(UPDATED_COEFFICIENT)
             .numberHours(UPDATED_NUMBER_HOURS)
@@ -779,6 +786,7 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getReleaseDate()).isEqualTo(UPDATED_RELEASE_DATE);
         assertThat(testEmployee.getWorkstation()).isEqualTo(UPDATED_WORKSTATION);
         assertThat(testEmployee.getDescriptionWorkstation()).isEqualTo(UPDATED_DESCRIPTION_WORKSTATION);
+        assertThat(testEmployee.getDepartment()).isEqualTo(UPDATED_DEPARTMENT);
         assertThat(testEmployee.getLevel()).isEqualTo(UPDATED_LEVEL);
         assertThat(testEmployee.getCoefficient()).isEqualTo(UPDATED_COEFFICIENT);
         assertThat(testEmployee.getNumberHours()).isEqualTo(UPDATED_NUMBER_HOURS);

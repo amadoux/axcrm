@@ -166,6 +166,12 @@ export const EmployeeDetail = () => {
           </dt>
           <dd>{employeeEntity.descriptionWorkstation}</dd>
           <dt>
+            <span id="department">
+              <Translate contentKey="axcrmApp.employee.department">Department</Translate>
+            </span>
+          </dt>
+          <dd>{employeeEntity.department}</dd>
+          <dt>
             <span id="level">
               <Translate contentKey="axcrmApp.employee.level">Level</Translate>
             </span>

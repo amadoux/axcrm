@@ -1,0 +1,11 @@
+id;spent_date;spent_type;status_charges;amount;purchase_manager;comment_text
+1;2024-01-18T19:41:23;RENT;ACCEPTED;16633;membre de l’équipe;../fake-data/blob/hipster.txt
+2;2024-01-19T01:38:36;SHIFT;ACCEPTED;22170;acquérir porter de peur que;../fake-data/blob/hipster.txt
+3;2024-01-18T15:55:11;ADMINISTRATIVE;ACCEPTED;4494;avant-hier;../fake-data/blob/hipster.txt
+4;2024-01-19T02:10:49;TELECOMMUNICATIONS_FEES;REJECTED;23117;ouf d'entre;../fake-data/blob/hipster.txt
+5;2024-01-18T17:09:36;TELECOMMUNICATIONS_FEES;ACCEPTED;17182;croâ;../fake-data/blob/hipster.txt
+6;2024-01-18T19:30:15;RENT;IN_PROGRESS;10337;sympathique avant-hier en;../fake-data/blob/hipster.txt
+7;2024-01-18T14:11:16;ADMINISTRATIVE;IN_PROGRESS;4838;dès que;../fake-data/blob/hipster.txt
+8;2024-01-18T15:41:50;TELECOMMUNICATIONS_FEES;REJECTED;26726;main-d’œuvre paf tandis que;../fake-data/blob/hipster.txt
+9;2024-01-19T02:06:01;MARKETING;REJECTED;25855;direction au-dessous de;../fake-data/blob/hipster.txt
+10;2024-01-18T22:30:33;ADMINISTRATIVE;REJECTED;28467;comme;../fake-data/blob/hipster.txt
