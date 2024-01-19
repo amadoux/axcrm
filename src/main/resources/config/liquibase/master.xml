@@ -20,10 +20,16 @@
     <include file="config/liquibase/changelog/20240119093924_added_entity_Enterprise.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240119094024_added_entity_Employee.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240119093924_added_entity_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240119093924_added_entity_PaySlip.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240119094024_added_entity_Absence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240119094124_added_entity_SocialCharges.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240119093924_added_entity_constraints_Enterprise.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240119094024_added_entity_constraints_Employee.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240119093924_added_entity_constraints_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240119093924_added_entity_constraints_PaySlip.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240119094024_added_entity_constraints_Absence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240119094124_added_entity_constraints_SocialCharges.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

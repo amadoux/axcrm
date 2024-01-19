@@ -350,11 +350,7 @@ class ContractResourceIT {
         Contract partialUpdatedContract = new Contract();
         partialUpdatedContract.setId(contract.getId());
 
-        partialUpdatedContract
-            .releaseDate(UPDATED_RELEASE_DATE)
-            .statusContract(UPDATED_STATUS_CONTRACT)
-            .uploadContract(UPDATED_UPLOAD_CONTRACT)
-            .uploadContractContentType(UPDATED_UPLOAD_CONTRACT_CONTENT_TYPE);
+        partialUpdatedContract.contractType(UPDATED_CONTRACT_TYPE).entryDate(UPDATED_ENTRY_DATE).statusContract(UPDATED_STATUS_CONTRACT);
 
         restContractMockMvc
             .perform(
@@ -368,12 +364,12 @@ class ContractResourceIT {
         List<Contract> contractList = contractRepository.findAll();
         assertThat(contractList).hasSize(databaseSizeBeforeUpdate);
         Contract testContract = contractList.get(contractList.size() - 1);
-        assertThat(testContract.getContractType()).isEqualTo(DEFAULT_CONTRACT_TYPE);
-        assertThat(testContract.getEntryDate()).isEqualTo(DEFAULT_ENTRY_DATE);
-        assertThat(testContract.getReleaseDate()).isEqualTo(UPDATED_RELEASE_DATE);
+        assertThat(testContract.getContractType()).isEqualTo(UPDATED_CONTRACT_TYPE);
+        assertThat(testContract.getEntryDate()).isEqualTo(UPDATED_ENTRY_DATE);
+        assertThat(testContract.getReleaseDate()).isEqualTo(DEFAULT_RELEASE_DATE);
         assertThat(testContract.getStatusContract()).isEqualTo(UPDATED_STATUS_CONTRACT);
-        assertThat(testContract.getUploadContract()).isEqualTo(UPDATED_UPLOAD_CONTRACT);
-        assertThat(testContract.getUploadContractContentType()).isEqualTo(UPDATED_UPLOAD_CONTRACT_CONTENT_TYPE);
+        assertThat(testContract.getUploadContract()).isEqualTo(DEFAULT_UPLOAD_CONTRACT);
+        assertThat(testContract.getUploadContractContentType()).isEqualTo(DEFAULT_UPLOAD_CONTRACT_CONTENT_TYPE);
     }
 
     @Test

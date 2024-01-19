@@ -93,6 +93,11 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "department",
+      "fieldType": "Department",
+      "fieldValues": "Production,Ventes,Marketing,Recherche_Developpement,Comptabilite_Finance,Ressources_Humaines,Service_Client,IT"
+    },
+    {
       "fieldName": "level",
       "fieldType": "Level",
       "fieldValues": "A,B,C,D,E"
