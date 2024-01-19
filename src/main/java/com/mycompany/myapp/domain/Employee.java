@@ -2,6 +2,7 @@ package com.mycompany.myapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mycompany.myapp.domain.enumeration.ContractType;
+import com.mycompany.myapp.domain.enumeration.Department;
 import com.mycompany.myapp.domain.enumeration.Level;
 import com.mycompany.myapp.domain.enumeration.Pays;
 import com.mycompany.myapp.domain.enumeration.SalaryType;
@@ -97,6 +98,10 @@ public class Employee implements Serializable {
 
     @Column(name = "description_workstation")
     private String descriptionWorkstation;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "department")
+    private Department department;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "level")
@@ -415,6 +420,19 @@ public class Employee implements Serializable {
         this.descriptionWorkstation = descriptionWorkstation;
     }
 
+    public Department getDepartment() {
+        return this.department;
+    }
+
+    public Employee department(Department department) {
+        this.setDepartment(department);
+        return this;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     public Level getLevel() {
         return this.level;
     }
@@ -633,6 +651,7 @@ public class Employee implements Serializable {
             ", releaseDate='" + getReleaseDate() + "'" +
             ", workstation='" + getWorkstation() + "'" +
             ", descriptionWorkstation='" + getDescriptionWorkstation() + "'" +
+            ", department='" + getDepartment() + "'" +
             ", level='" + getLevel() + "'" +
             ", coefficient=" + getCoefficient() +
             ", numberHours='" + getNumberHours() + "'" +
