@@ -14,6 +14,7 @@ import { getEntities as getEmployees } from 'app/entities/employee/employee.redu
 import { IEmployee } from 'app/shared/model/employee.model';
 import { Pays } from 'app/shared/model/enumerations/pays.model';
 import { TypeEmployed } from 'app/shared/model/enumerations/type-employed.model';
+import { Department } from 'app/shared/model/enumerations/department.model';
 import { Level } from 'app/shared/model/enumerations/level.model';
 import { ContractType } from 'app/shared/model/enumerations/contract-type.model';
 import { SalaryType } from 'app/shared/model/enumerations/salary-type.model';
@@ -35,6 +36,7 @@ export const EmployeeUpdate = () => {
   const updateSuccess = useAppSelector(state => state.employee.updateSuccess);
   const paysValues = Object.keys(Pays);
   const typeEmployedValues = Object.keys(TypeEmployed);
+  const departmentValues = Object.keys(Department);
   const levelValues = Object.keys(Level);
   const contractTypeValues = Object.keys(ContractType);
   const salaryTypeValues = Object.keys(SalaryType);
@@ -106,6 +108,7 @@ export const EmployeeUpdate = () => {
       : {
           nationality: 'CAMEROON',
           typeEmployed: 'MARKETER',
+          department: 'Production',
           level: 'A',
           contractType: 'CDD',
           salaryType: 'EXECUTIVE_SALARIED',
@@ -303,6 +306,19 @@ export const EmployeeUpdate = () => {
                 data-cy="descriptionWorkstation"
                 type="text"
               />
+              <ValidatedField
+                label={translate('axcrmApp.employee.department')}
+                id="employee-department"
+                name="department"
+                data-cy="department"
+                type="select"
+              >
+                {departmentValues.map(department => (
+                  <option value={department} key={department}>
+                    {translate('axcrmApp.Department.' + department)}
+                  </option>
+                ))}
+              </ValidatedField>
               <ValidatedField label={translate('axcrmApp.employee.level')} id="employee-level" name="level" data-cy="level" type="select">
                 {levelValues.map(level => (
                   <option value={level} key={level}>

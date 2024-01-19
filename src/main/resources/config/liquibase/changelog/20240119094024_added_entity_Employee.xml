@@ -74,6 +74,9 @@
             <column name="description_workstation" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="department" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="level" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -153,6 +156,7 @@
             <column name="release_date" type="date"/>
             <column name="workstation" type="string"/>
             <column name="description_workstation" type="string"/>
+            <column name="department" type="string"/>
             <column name="level" type="string"/>
             <column name="coefficient" type="numeric"/>
             <column name="number_hours" type="string"/>

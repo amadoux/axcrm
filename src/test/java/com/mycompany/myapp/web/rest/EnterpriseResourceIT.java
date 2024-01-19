@@ -45,8 +45,8 @@ class EnterpriseResourceIT {
     private static final String DEFAULT_BUSINESS_DOMICILE = "AAAAAAAAAA";
     private static final String UPDATED_BUSINESS_DOMICILE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_EMAIL = ";!)}@'N.)CodA";
-    private static final String UPDATED_EMAIL = "_T>r@2.bg";
+    private static final String DEFAULT_EMAIL = "EMq9@W.fdez3i";
+    private static final String UPDATED_EMAIL = ".s@TD.7IW$VV";
 
     private static final String DEFAULT_BUSINESS_PHONE = "AAAAAAAAAA";
     private static final String UPDATED_BUSINESS_PHONE = "BBBBBBBBBB";
@@ -464,15 +464,7 @@ class EnterpriseResourceIT {
         Enterprise partialUpdatedEnterprise = new Enterprise();
         partialUpdatedEnterprise.setId(enterprise.getId());
 
-        partialUpdatedEnterprise
-            .companyName(UPDATED_COMPANY_NAME)
-            .businessRegisterNumber(UPDATED_BUSINESS_REGISTER_NUMBER)
-            .email(UPDATED_EMAIL)
-            .businessPhone(UPDATED_BUSINESS_PHONE)
-            .country(UPDATED_COUNTRY)
-            .city(UPDATED_CITY)
-            .businessLogo(UPDATED_BUSINESS_LOGO)
-            .businessLogoContentType(UPDATED_BUSINESS_LOGO_CONTENT_TYPE);
+        partialUpdatedEnterprise.businessRegisterNumber(UPDATED_BUSINESS_REGISTER_NUMBER).email(UPDATED_EMAIL).city(UPDATED_CITY);
 
         restEnterpriseMockMvc
             .perform(
@@ -486,16 +478,16 @@ class EnterpriseResourceIT {
         List<Enterprise> enterpriseList = enterpriseRepository.findAll();
         assertThat(enterpriseList).hasSize(databaseSizeBeforeUpdate);
         Enterprise testEnterprise = enterpriseList.get(enterpriseList.size() - 1);
-        assertThat(testEnterprise.getCompanyName()).isEqualTo(UPDATED_COMPANY_NAME);
+        assertThat(testEnterprise.getCompanyName()).isEqualTo(DEFAULT_COMPANY_NAME);
         assertThat(testEnterprise.getBusinessRegisterNumber()).isEqualTo(UPDATED_BUSINESS_REGISTER_NUMBER);
         assertThat(testEnterprise.getUniqueIdentificationNumber()).isEqualTo(DEFAULT_UNIQUE_IDENTIFICATION_NUMBER);
         assertThat(testEnterprise.getBusinessDomicile()).isEqualTo(DEFAULT_BUSINESS_DOMICILE);
         assertThat(testEnterprise.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testEnterprise.getBusinessPhone()).isEqualTo(UPDATED_BUSINESS_PHONE);
-        assertThat(testEnterprise.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testEnterprise.getBusinessPhone()).isEqualTo(DEFAULT_BUSINESS_PHONE);
+        assertThat(testEnterprise.getCountry()).isEqualTo(DEFAULT_COUNTRY);
         assertThat(testEnterprise.getCity()).isEqualTo(UPDATED_CITY);
-        assertThat(testEnterprise.getBusinessLogo()).isEqualTo(UPDATED_BUSINESS_LOGO);
-        assertThat(testEnterprise.getBusinessLogoContentType()).isEqualTo(UPDATED_BUSINESS_LOGO_CONTENT_TYPE);
+        assertThat(testEnterprise.getBusinessLogo()).isEqualTo(DEFAULT_BUSINESS_LOGO);
+        assertThat(testEnterprise.getBusinessLogoContentType()).isEqualTo(DEFAULT_BUSINESS_LOGO_CONTENT_TYPE);
         assertThat(testEnterprise.getMapLocator()).isEqualTo(DEFAULT_MAP_LOCATOR);
         assertThat(testEnterprise.getMapLocatorContentType()).isEqualTo(DEFAULT_MAP_LOCATOR_CONTENT_TYPE);
     }

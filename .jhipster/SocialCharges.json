@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20240119094124"
+  },
+  "applications": "*",
+  "documentation": "Ajouter les charges sociales",
+  "dto": "mapstruct",
+  "entityTableName": "social_charges",
+  "fields": [
+    {
+      "fieldName": "spentDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "spentType",
+      "fieldType": "SPentType",
+      "fieldValues": "MATERIAL,ADMINISTRATIVE,RENT,TELECOMMUNICATIONS_FEES,SERVICES,SHIFT,COMMUNICATION,MARKETING,OTHERS"
+    },
+    {
+      "fieldName": "statusCharges",
+      "fieldType": "StatusCharges",
+      "fieldValues": "IN_PROGRESS,ACCEPTED,REJECTED"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "purchaseManager",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commentText",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "SocialCharges",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "companyName",
+      "otherEntityName": "enterprise",
+      "relationshipName": "enterprise",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,11 @@
+id;net_salary_pay;pay_slip_date;upload_pay_slip;upload_pay_slip_content_type
+1;21531;2024-01-19T03:38:57;../fake-data/blob/hipster.png;image/png
+2;22288;2024-01-19T00:12:25;../fake-data/blob/hipster.png;image/png
+3;31725;2024-01-18T23:58:11;../fake-data/blob/hipster.png;image/png
+4;32552;2024-01-19T06:58:49;../fake-data/blob/hipster.png;image/png
+5;17715;2024-01-18T11:15:29;../fake-data/blob/hipster.png;image/png
+6;4659;2024-01-19T08:47:03;../fake-data/blob/hipster.png;image/png
+7;8006;2024-01-19T09:04:27;../fake-data/blob/hipster.png;image/png
+8;32706;2024-01-19T09:06:33;../fake-data/blob/hipster.png;image/png
+9;10985;2024-01-19T05:18:12;../fake-data/blob/hipster.png;image/png
+10;18505;2024-01-19T02:47:20;../fake-data/blob/hipster.png;image/png
