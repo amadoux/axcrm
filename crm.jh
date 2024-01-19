@@ -60,7 +60,24 @@ entity Employee {
 	
     
 }
+/*****Ajouter un contrat *******/
+enum StatusContract {
+    ENCOURS, RUPTURE_CONVENTIONNELLE, LICENCIEMENT_ABUSIVE, LICENCIEMENT_ECONOMIQUE, FIN_CONTRAT
+}
 
+/**
+ * The Contrat.
+ * Ajouter un contrat
+ */
+entity Contract {
+    /** fieldName */
+   
+    contractType ContractType
+    entryDate Instant
+    releaseDate Instant
+    statusContract StatusContract
+    uploadContract ImageBlob minbytes(3) maxbytes(1000) required
+}
 
 enum Pays {
     CAMEROON , SENEGAL, COTE_IVOIRE, MALI
@@ -72,7 +89,7 @@ enum Level {
     A, B, C, D, E
 }
   enum ContractType {
-    CDD, CDI,INTERN, APPRENTICE, COMMERCIAL_AGENT, EXTERNAL
+    CDD, CDI, INTERN, APPRENTICE, COMMERCIAL_AGENT, EXTERNAL
 }
 enum SalaryType {
     EXECUTIVE_SALARIED, ASSOCIATE, NON_EXECUTIVE_SALARIED
@@ -82,11 +99,12 @@ enum SalaryType {
 // defining multiple OneToMany relationships with comments
 relationship ManyToOne {
 	
-   
+Contract {employee(email)} to Employee   
 Employee{enterprise(companyName)} to Enterprise
 }
 relationship ManyToOne {
  Employee{employee(email)} to Employee {manager}
+ 
 }
 
 
