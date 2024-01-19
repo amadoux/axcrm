@@ -190,6 +190,10 @@ export const Employee = () => {
                   <Translate contentKey="axcrmApp.employee.descriptionWorkstation">Description Workstation</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('descriptionWorkstation')} />
                 </th>
+                <th className="hand" onClick={sort('department')}>
+                  <Translate contentKey="axcrmApp.employee.department">Department</Translate>{' '}
+                  <FontAwesomeIcon icon={getSortIconByFieldName('department')} />
+                </th>
                 <th className="hand" onClick={sort('level')}>
                   <Translate contentKey="axcrmApp.employee.level">Level</Translate>{' '}
                   <FontAwesomeIcon icon={getSortIconByFieldName('level')} />
@@ -282,6 +286,9 @@ export const Employee = () => {
                   <td>{employee.releaseDate ? <TextFormat type="date" value={employee.releaseDate} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{employee.workstation}</td>
                   <td>{employee.descriptionWorkstation}</td>
+                  <td>
+                    <Translate contentKey={`axcrmApp.Department.${employee.department}`} />
+                  </td>
                   <td>
                     <Translate contentKey={`axcrmApp.Level.${employee.level}`} />
                   </td>
