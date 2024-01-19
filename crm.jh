@@ -1,0 +1,105 @@
+
+
+/** Entreprise */
+
+entity Enterprise {
+    /** fieldName */
+
+    companyName String required
+    businessRegisterNumber String required
+    uniqueIdentificationNumber String required
+    businessDomicile String
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    businessPhone String required
+    country Pays
+    city String
+    businessLogo ImageBlob minbytes(3) maxbytes(1000)
+    mapLocator ImageBlob minbytes(3) maxbytes(1000)
+}
+/**
+ * The Employee entity.
+ */
+entity Employee {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String
+	lastName String
+	email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+	phoneNumber String
+    identityCard String required
+    dateInspiration Instant
+    nationality Pays
+    uploadIdentityCard Blob minbytes(3) maxbytes(1000)
+    typeEmployed TypeEmployed
+     cityAgency String
+     firstName String
+     lastName String
+     residenceCity String
+     email String required
+     phoneNumber String required
+     address String
+     socialSecurityNumber String
+     birthDate Instant
+     birthPlace String
+     entryDate Instant
+     releaseDate Instant
+     workstation String
+     descriptionWorkstation String
+     level Level
+     coefficient Long
+     numberHours String
+     averageHourlyCost String
+     monthlyGrossAmount Long
+     commissionAmount Long
+     contractType ContractType
+     salaryType SalaryType
+     hireDate Instant
+	
+    
+	
+    
+}
+
+
+enum Pays {
+    CAMEROON , SENEGAL, COTE_IVOIRE, MALI
+}
+enum TypeEmployed {
+    MARKETER, SALARY, CONSULTANT
+}
+enum Level {
+    A, B, C, D, E
+}
+  enum ContractType {
+    CDD, CDI,INTERN, APPRENTICE, COMMERCIAL_AGENT, EXTERNAL
+}
+enum SalaryType {
+    EXECUTIVE_SALARIED, ASSOCIATE, NON_EXECUTIVE_SALARIED
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	
+    Employee{manager(email)} to Employee
+    Employee{enterprise(companyName)} to Enterprise
+}
+
+
+
+
+
+
+// Set pagination options
+paginate Employee with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfer Objects (DTO)
+ dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Employee
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

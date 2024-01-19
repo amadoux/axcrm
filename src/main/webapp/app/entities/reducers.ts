@@ -1,6 +1,10 @@
+import enterprise from 'app/entities/enterprise/enterprise.reducer';
+import employee from 'app/entities/employee/employee.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 const entitiesReducers = {
+  enterprise,
+  employee,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
 };
 
