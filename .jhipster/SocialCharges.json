@@ -41,6 +41,13 @@
   "pagination": "pagination",
   "relationships": [
     {
+      "otherEntityField": "email",
+      "otherEntityName": "employee",
+      "relationshipName": "responsableDepense",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
       "otherEntityField": "companyName",
       "otherEntityName": "enterprise",
       "relationshipName": "enterprise",

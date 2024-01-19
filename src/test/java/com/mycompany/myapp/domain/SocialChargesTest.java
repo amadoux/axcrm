@@ -1,5 +1,6 @@
 package com.mycompany.myapp.domain;
 
+import static com.mycompany.myapp.domain.EmployeeTestSamples.*;
 import static com.mycompany.myapp.domain.EnterpriseTestSamples.*;
 import static com.mycompany.myapp.domain.SocialChargesTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,6 +22,18 @@ class SocialChargesTest {
 
         socialCharges2 = getSocialChargesSample2();
         assertThat(socialCharges1).isNotEqualTo(socialCharges2);
+    }
+
+    @Test
+    void responsableDepenseTest() throws Exception {
+        SocialCharges socialCharges = getSocialChargesRandomSampleGenerator();
+        Employee employeeBack = getEmployeeRandomSampleGenerator();
+
+        socialCharges.setResponsableDepense(employeeBack);
+        assertThat(socialCharges.getResponsableDepense()).isEqualTo(employeeBack);
+
+        socialCharges.responsableDepense(null);
+        assertThat(socialCharges.getResponsableDepense()).isNull();
     }
 
     @Test

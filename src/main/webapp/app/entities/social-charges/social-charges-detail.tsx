@@ -73,6 +73,10 @@ export const SocialChargesDetail = () => {
           </dt>
           <dd>{socialChargesEntity.commentText}</dd>
           <dt>
+            <Translate contentKey="axcrmApp.socialCharges.responsableDepense">Responsable Depense</Translate>
+          </dt>
+          <dd>{socialChargesEntity.responsableDepense ? socialChargesEntity.responsableDepense.email : ''}</dd>
+          <dt>
             <Translate contentKey="axcrmApp.socialCharges.enterprise">Enterprise</Translate>
           </dt>
           <dd>{socialChargesEntity.enterprise ? socialChargesEntity.enterprise.companyName : ''}</dd>

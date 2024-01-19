@@ -8,6 +8,8 @@ import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateT
 import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
+import { IEmployee } from 'app/shared/model/employee.model';
+import { getEntities as getEmployees } from 'app/entities/employee/employee.reducer';
 import { IEnterprise } from 'app/shared/model/enterprise.model';
 import { getEntities as getEnterprises } from 'app/entities/enterprise/enterprise.reducer';
 import { ISocialCharges } from 'app/shared/model/social-charges.model';
@@ -23,6 +25,7 @@ export const SocialChargesUpdate = () => {
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
 
+  const employees = useAppSelector(state => state.employee.entities);
   const enterprises = useAppSelector(state => state.enterprise.entities);
   const socialChargesEntity = useAppSelector(state => state.socialCharges.entity);
   const loading = useAppSelector(state => state.socialCharges.loading);
@@ -42,6 +45,7 @@ export const SocialChargesUpdate = () => {
       dispatch(getEntity(id));
     }
 
+    dispatch(getEmployees({}));
     dispatch(getEnterprises({}));
   }, []);
 
@@ -64,6 +68,7 @@ export const SocialChargesUpdate = () => {
     const entity = {
       ...socialChargesEntity,
       ...values,
+      responsableDepense: employees.find(it => it.id.toString() === values.responsableDepense.toString()),
       enterprise: enterprises.find(it => it.id.toString() === values.enterprise.toString()),
     };
 
@@ -84,6 +89,7 @@ export const SocialChargesUpdate = () => {
           statusCharges: 'IN_PROGRESS',
           ...socialChargesEntity,
           spentDate: convertDateTimeFromServer(socialChargesEntity.spentDate),
+          responsableDepense: socialChargesEntity?.responsableDepense?.id,
           enterprise: socialChargesEntity?.enterprise?.id,
         };
 
@@ -174,6 +180,22 @@ export const SocialChargesUpdate = () => {
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
               />
+              <ValidatedField
+                id="social-charges-responsableDepense"
+                name="responsableDepense"
+                data-cy="responsableDepense"
+                label={translate('axcrmApp.socialCharges.responsableDepense')}
+                type="select"
+              >
+                <option value="" key="0" />
+                {employees
+                  ? employees.map(otherEntity => (
+                      <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.email}
+                      </option>
+                    ))
+                  : null}
+              </ValidatedField>
               <ValidatedField
                 id="social-charges-enterprise"
                 name="enterprise"

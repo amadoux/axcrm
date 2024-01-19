@@ -32,6 +32,9 @@
             <column name="comment_text" type="${clobType}">
                 <constraints nullable="false" />
             </column>
+            <column name="responsable_depense_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <column name="enterprise_id" type="bigint">
                 <constraints nullable="true" />
             </column>

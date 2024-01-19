@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { IEmployee } from 'app/shared/model/employee.model';
 import { IEnterprise } from 'app/shared/model/enterprise.model';
 import { SPentType } from 'app/shared/model/enumerations/s-pent-type.model';
 import { StatusCharges } from 'app/shared/model/enumerations/status-charges.model';
@@ -11,6 +12,7 @@ export interface ISocialCharges {
   amount?: number;
   purchaseManager?: string | null;
   commentText?: string;
+  responsableDepense?: IEmployee | null;
   enterprise?: IEnterprise | null;
 }
 
