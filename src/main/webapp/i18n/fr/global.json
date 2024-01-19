@@ -10,7 +10,8 @@
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
         "enterprise": "Enterprise",
         "employee": "Employee",
-        "contract": "Contract"
+        "contract": "Contract",
+        "paySlip": "Pay Slip"
       },
       "account": {
         "main": "Compte",

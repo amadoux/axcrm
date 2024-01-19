@@ -37,6 +37,7 @@
       "releaseDate": "Release Date",
       "workstation": "Workstation",
       "descriptionWorkstation": "Description Workstation",
+      "department": "Department",
       "level": "Level",
       "coefficient": "Coefficient",
       "numberHours": "Number Hours",
