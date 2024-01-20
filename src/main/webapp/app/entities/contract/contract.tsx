@@ -135,7 +135,7 @@ export const Contract = () => {
                   <FontAwesomeIcon icon={getSortIconByFieldName('uploadContract')} />
                 </th>
                 <th>
-                  <Translate contentKey="axcrmApp.contract.employee">Employee</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="axcrmApp.contract.manageremployee">Manageremployee</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -174,7 +174,13 @@ export const Contract = () => {
                       </div>
                     ) : null}
                   </td>
-                  <td>{contract.employee ? <Link to={`/employee/${contract.employee.id}`}>{contract.employee.email}</Link> : ''}</td>
+                  <td>
+                    {contract.manageremployee ? (
+                      <Link to={`/employee/${contract.manageremployee.id}`}>{contract.manageremployee.email}</Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/contract/${contract.id}`} color="info" size="sm" data-cy="entityDetailsButton">

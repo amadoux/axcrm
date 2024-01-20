@@ -55,7 +55,7 @@ public class Contract implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
-    private Employee employee;
+    private Employee manageremployee;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -150,16 +150,16 @@ public class Contract implements Serializable {
         this.uploadContractContentType = uploadContractContentType;
     }
 
-    public Employee getEmployee() {
-        return this.employee;
+    public Employee getManageremployee() {
+        return this.manageremployee;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setManageremployee(Employee employee) {
+        this.manageremployee = employee;
     }
 
-    public Contract employee(Employee employee) {
-        this.setEmployee(employee);
+    public Contract manageremployee(Employee employee) {
+        this.setManageremployee(employee);
         return this;
     }
 

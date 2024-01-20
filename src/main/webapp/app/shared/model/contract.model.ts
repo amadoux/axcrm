@@ -11,7 +11,7 @@ export interface IContract {
   statusContract?: keyof typeof StatusContract | null;
   uploadContractContentType?: string;
   uploadContract?: string;
-  employee?: IEmployee | null;
+  manageremployee?: IEmployee | null;
 }
 
 export const defaultValue: Readonly<IContract> = {};
