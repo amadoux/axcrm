@@ -23,7 +23,7 @@
       "releaseDate": "Release Date",
       "statusContract": "Status Contract",
       "uploadContract": "Upload Contract",
-      "employee": "Employee",
+      "manageremployee": "Manageremployee",
       "help": {
         "contractType": "fieldName"
       }
