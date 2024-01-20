@@ -27,14 +27,14 @@ public interface ContractRepository extends JpaRepository<Contract, Long> {
     }
 
     @Query(
-        value = "select contract from Contract contract left join fetch contract.employee",
+        value = "select contract from Contract contract left join fetch contract.manageremployee",
         countQuery = "select count(contract) from Contract contract"
     )
     Page<Contract> findAllWithToOneRelationships(Pageable pageable);
 
-    @Query("select contract from Contract contract left join fetch contract.employee")
+    @Query("select contract from Contract contract left join fetch contract.manageremployee")
     List<Contract> findAllWithToOneRelationships();
 
-    @Query("select contract from Contract contract left join fetch contract.employee where contract.id =:id")
+    @Query("select contract from Contract contract left join fetch contract.manageremployee where contract.id =:id")
     Optional<Contract> findOneWithToOneRelationships(@Param("id") Long id);
 }
