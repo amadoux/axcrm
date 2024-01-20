@@ -61,12 +61,6 @@ export const SocialChargesDetail = () => {
           </dt>
           <dd>{socialChargesEntity.amount}</dd>
           <dt>
-            <span id="purchaseManager">
-              <Translate contentKey="axcrmApp.socialCharges.purchaseManager">Purchase Manager</Translate>
-            </span>
-          </dt>
-          <dd>{socialChargesEntity.purchaseManager}</dd>
-          <dt>
             <span id="commentText">
               <Translate contentKey="axcrmApp.socialCharges.commentText">Comment Text</Translate>
             </span>

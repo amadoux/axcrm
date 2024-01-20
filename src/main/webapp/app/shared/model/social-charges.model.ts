@@ -10,7 +10,6 @@ export interface ISocialCharges {
   spentType?: keyof typeof SPentType | null;
   statusCharges?: keyof typeof StatusCharges | null;
   amount?: number;
-  purchaseManager?: string | null;
   commentText?: string;
   responsableDepense?: IEmployee | null;
   enterprise?: IEnterprise | null;

@@ -26,9 +26,6 @@
             <column name="amount" type="bigint">
                 <constraints nullable="false" />
             </column>
-            <column name="purchase_manager" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="comment_text" type="${clobType}">
                 <constraints nullable="false" />
             </column>
@@ -64,7 +61,6 @@
             <column name="spent_type" type="string"/>
             <column name="status_charges" type="string"/>
             <column name="amount" type="numeric"/>
-            <column name="purchase_manager" type="string"/>
             <column name="comment_text" type="clob"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

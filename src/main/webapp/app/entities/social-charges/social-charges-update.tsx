@@ -164,13 +164,6 @@ export const SocialChargesUpdate = () => {
                 }}
               />
               <ValidatedField
-                label={translate('axcrmApp.socialCharges.purchaseManager')}
-                id="social-charges-purchaseManager"
-                name="purchaseManager"
-                data-cy="purchaseManager"
-                type="text"
-              />
-              <ValidatedField
                 label={translate('axcrmApp.socialCharges.commentText')}
                 id="social-charges-commentText"
                 name="commentText"

@@ -56,9 +56,6 @@ class SocialChargesResourceIT {
     private static final Long DEFAULT_AMOUNT = 1L;
     private static final Long UPDATED_AMOUNT = 2L;
 
-    private static final String DEFAULT_PURCHASE_MANAGER = "AAAAAAAAAA";
-    private static final String UPDATED_PURCHASE_MANAGER = "BBBBBBBBBB";
-
     private static final String DEFAULT_COMMENT_TEXT = "AAAAAAAAAA";
     private static final String UPDATED_COMMENT_TEXT = "BBBBBBBBBB";
 
@@ -100,7 +97,6 @@ class SocialChargesResourceIT {
             .spentType(DEFAULT_SPENT_TYPE)
             .statusCharges(DEFAULT_STATUS_CHARGES)
             .amount(DEFAULT_AMOUNT)
-            .purchaseManager(DEFAULT_PURCHASE_MANAGER)
             .commentText(DEFAULT_COMMENT_TEXT);
         return socialCharges;
     }
@@ -117,7 +113,6 @@ class SocialChargesResourceIT {
             .spentType(UPDATED_SPENT_TYPE)
             .statusCharges(UPDATED_STATUS_CHARGES)
             .amount(UPDATED_AMOUNT)
-            .purchaseManager(UPDATED_PURCHASE_MANAGER)
             .commentText(UPDATED_COMMENT_TEXT);
         return socialCharges;
     }
@@ -147,7 +142,6 @@ class SocialChargesResourceIT {
         assertThat(testSocialCharges.getSpentType()).isEqualTo(DEFAULT_SPENT_TYPE);
         assertThat(testSocialCharges.getStatusCharges()).isEqualTo(DEFAULT_STATUS_CHARGES);
         assertThat(testSocialCharges.getAmount()).isEqualTo(DEFAULT_AMOUNT);
-        assertThat(testSocialCharges.getPurchaseManager()).isEqualTo(DEFAULT_PURCHASE_MANAGER);
         assertThat(testSocialCharges.getCommentText()).isEqualTo(DEFAULT_COMMENT_TEXT);
     }
 
@@ -208,7 +202,6 @@ class SocialChargesResourceIT {
             .andExpect(jsonPath("$.[*].spentType").value(hasItem(DEFAULT_SPENT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].statusCharges").value(hasItem(DEFAULT_STATUS_CHARGES.toString())))
             .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.intValue())))
-            .andExpect(jsonPath("$.[*].purchaseManager").value(hasItem(DEFAULT_PURCHASE_MANAGER)))
             .andExpect(jsonPath("$.[*].commentText").value(hasItem(DEFAULT_COMMENT_TEXT.toString())));
     }
 
@@ -245,7 +238,6 @@ class SocialChargesResourceIT {
             .andExpect(jsonPath("$.spentType").value(DEFAULT_SPENT_TYPE.toString()))
             .andExpect(jsonPath("$.statusCharges").value(DEFAULT_STATUS_CHARGES.toString()))
             .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.intValue()))
-            .andExpect(jsonPath("$.purchaseManager").value(DEFAULT_PURCHASE_MANAGER))
             .andExpect(jsonPath("$.commentText").value(DEFAULT_COMMENT_TEXT.toString()));
     }
 
@@ -273,7 +265,6 @@ class SocialChargesResourceIT {
             .spentType(UPDATED_SPENT_TYPE)
             .statusCharges(UPDATED_STATUS_CHARGES)
             .amount(UPDATED_AMOUNT)
-            .purchaseManager(UPDATED_PURCHASE_MANAGER)
             .commentText(UPDATED_COMMENT_TEXT);
         SocialChargesDTO socialChargesDTO = socialChargesMapper.toDto(updatedSocialCharges);
 
@@ -293,7 +284,6 @@ class SocialChargesResourceIT {
         assertThat(testSocialCharges.getSpentType()).isEqualTo(UPDATED_SPENT_TYPE);
         assertThat(testSocialCharges.getStatusCharges()).isEqualTo(UPDATED_STATUS_CHARGES);
         assertThat(testSocialCharges.getAmount()).isEqualTo(UPDATED_AMOUNT);
-        assertThat(testSocialCharges.getPurchaseManager()).isEqualTo(UPDATED_PURCHASE_MANAGER);
         assertThat(testSocialCharges.getCommentText()).isEqualTo(UPDATED_COMMENT_TEXT);
     }
 
@@ -376,10 +366,7 @@ class SocialChargesResourceIT {
         SocialCharges partialUpdatedSocialCharges = new SocialCharges();
         partialUpdatedSocialCharges.setId(socialCharges.getId());
 
-        partialUpdatedSocialCharges
-            .spentDate(UPDATED_SPENT_DATE)
-            .purchaseManager(UPDATED_PURCHASE_MANAGER)
-            .commentText(UPDATED_COMMENT_TEXT);
+        partialUpdatedSocialCharges.spentType(UPDATED_SPENT_TYPE).statusCharges(UPDATED_STATUS_CHARGES).commentText(UPDATED_COMMENT_TEXT);
 
         restSocialChargesMockMvc
             .perform(
@@ -393,11 +380,10 @@ class SocialChargesResourceIT {
         List<SocialCharges> socialChargesList = socialChargesRepository.findAll();
         assertThat(socialChargesList).hasSize(databaseSizeBeforeUpdate);
         SocialCharges testSocialCharges = socialChargesList.get(socialChargesList.size() - 1);
-        assertThat(testSocialCharges.getSpentDate()).isEqualTo(UPDATED_SPENT_DATE);
-        assertThat(testSocialCharges.getSpentType()).isEqualTo(DEFAULT_SPENT_TYPE);
-        assertThat(testSocialCharges.getStatusCharges()).isEqualTo(DEFAULT_STATUS_CHARGES);
+        assertThat(testSocialCharges.getSpentDate()).isEqualTo(DEFAULT_SPENT_DATE);
+        assertThat(testSocialCharges.getSpentType()).isEqualTo(UPDATED_SPENT_TYPE);
+        assertThat(testSocialCharges.getStatusCharges()).isEqualTo(UPDATED_STATUS_CHARGES);
         assertThat(testSocialCharges.getAmount()).isEqualTo(DEFAULT_AMOUNT);
-        assertThat(testSocialCharges.getPurchaseManager()).isEqualTo(UPDATED_PURCHASE_MANAGER);
         assertThat(testSocialCharges.getCommentText()).isEqualTo(UPDATED_COMMENT_TEXT);
     }
 
@@ -418,7 +404,6 @@ class SocialChargesResourceIT {
             .spentType(UPDATED_SPENT_TYPE)
             .statusCharges(UPDATED_STATUS_CHARGES)
             .amount(UPDATED_AMOUNT)
-            .purchaseManager(UPDATED_PURCHASE_MANAGER)
             .commentText(UPDATED_COMMENT_TEXT);
 
         restSocialChargesMockMvc
@@ -437,7 +422,6 @@ class SocialChargesResourceIT {
         assertThat(testSocialCharges.getSpentType()).isEqualTo(UPDATED_SPENT_TYPE);
         assertThat(testSocialCharges.getStatusCharges()).isEqualTo(UPDATED_STATUS_CHARGES);
         assertThat(testSocialCharges.getAmount()).isEqualTo(UPDATED_AMOUNT);
-        assertThat(testSocialCharges.getPurchaseManager()).isEqualTo(UPDATED_PURCHASE_MANAGER);
         assertThat(testSocialCharges.getCommentText()).isEqualTo(UPDATED_COMMENT_TEXT);
     }
 
