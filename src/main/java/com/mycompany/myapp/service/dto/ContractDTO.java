@@ -34,7 +34,7 @@ public class ContractDTO implements Serializable {
     private byte[] uploadContract;
 
     private String uploadContractContentType;
-    private EmployeeDTO manageremployee;
+    private EmployeeDTO employee;
 
     public Long getId() {
         return id;
@@ -92,12 +92,12 @@ public class ContractDTO implements Serializable {
         this.uploadContractContentType = uploadContractContentType;
     }
 
-    public EmployeeDTO getManageremployee() {
-        return manageremployee;
+    public EmployeeDTO getEmployee() {
+        return employee;
     }
 
-    public void setManageremployee(EmployeeDTO manageremployee) {
-        this.manageremployee = manageremployee;
+    public void setEmployee(EmployeeDTO employee) {
+        this.employee = employee;
     }
 
     @Override
@@ -131,7 +131,7 @@ public class ContractDTO implements Serializable {
             ", releaseDate='" + getReleaseDate() + "'" +
             ", statusContract='" + getStatusContract() + "'" +
             ", uploadContract='" + getUploadContract() + "'" +
-            ", manageremployee=" + getManageremployee() +
+            ", employee=" + getEmployee() +
             "}";
     }
 }

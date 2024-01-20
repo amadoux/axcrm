@@ -230,9 +230,9 @@ export const EmployeeDetail = () => {
           </dt>
           <dd>{employeeEntity.enterprise ? employeeEntity.enterprise.companyName : ''}</dd>
           <dt>
-            <Translate contentKey="axcrmApp.employee.employee">Employee</Translate>
+            <Translate contentKey="axcrmApp.employee.managerEmployee">Manager Employee</Translate>
           </dt>
-          <dd>{employeeEntity.employee ? employeeEntity.employee.email : ''}</dd>
+          <dd>{employeeEntity.managerEmployee ? employeeEntity.managerEmployee.email : ''}</dd>
         </dl>
         <Button tag={Link} to="/employee" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

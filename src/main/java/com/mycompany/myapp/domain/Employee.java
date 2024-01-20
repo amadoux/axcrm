@@ -137,12 +137,12 @@ public class Employee implements Serializable {
     private Enterprise enterprise;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
-    private Employee employee;
+    @JsonIgnoreProperties(value = { "enterprise", "managerEmployee", "managers" }, allowSetters = true)
+    private Employee managerEmployee;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "managerEmployee")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "enterprise", "managerEmployee", "managers" }, allowSetters = true)
     private Set<Employee> managers = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -563,16 +563,16 @@ public class Employee implements Serializable {
         return this;
     }
 
-    public Employee getEmployee() {
-        return this.employee;
+    public Employee getManagerEmployee() {
+        return this.managerEmployee;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setManagerEmployee(Employee employee) {
+        this.managerEmployee = employee;
     }
 
-    public Employee employee(Employee employee) {
-        this.setEmployee(employee);
+    public Employee managerEmployee(Employee employee) {
+        this.setManagerEmployee(employee);
         return this;
     }
 
@@ -582,10 +582,10 @@ public class Employee implements Serializable {
 
     public void setManagers(Set<Employee> employees) {
         if (this.managers != null) {
-            this.managers.forEach(i -> i.setEmployee(null));
+            this.managers.forEach(i -> i.setManagerEmployee(null));
         }
         if (employees != null) {
-            employees.forEach(i -> i.setEmployee(this));
+            employees.forEach(i -> i.setManagerEmployee(this));
         }
         this.managers = employees;
     }
@@ -597,13 +597,13 @@ public class Employee implements Serializable {
 
     public Employee addManager(Employee employee) {
         this.managers.add(employee);
-        employee.setEmployee(this);
+        employee.setManagerEmployee(this);
         return this;
     }
 
     public Employee removeManager(Employee employee) {
         this.managers.remove(employee);
-        employee.setEmployee(null);
+        employee.setManagerEmployee(null);
         return this;
     }
 

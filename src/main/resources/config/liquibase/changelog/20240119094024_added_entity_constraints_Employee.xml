@@ -15,9 +15,9 @@
                                  referencedTableName="enterprise"
                                  />
 
-        <addForeignKeyConstraint baseColumnNames="employee_id"
+        <addForeignKeyConstraint baseColumnNames="manager_employee_id"
                                  baseTableName="employee"
-                                 constraintName="fk_employee__employee_id"
+                                 constraintName="fk_employee__manager_employee_id"
                                  referencedColumnNames="id"
                                  referencedTableName="employee"
                                  />

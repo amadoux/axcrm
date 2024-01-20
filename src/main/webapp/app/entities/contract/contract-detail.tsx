@@ -84,9 +84,9 @@ export const ContractDetail = () => {
             ) : null}
           </dd>
           <dt>
-            <Translate contentKey="axcrmApp.contract.manageremployee">Manageremployee</Translate>
+            <Translate contentKey="axcrmApp.contract.employee">Employee</Translate>
           </dt>
-          <dd>{contractEntity.manageremployee ? contractEntity.manageremployee.email : ''}</dd>
+          <dd>{contractEntity.employee ? contractEntity.employee.email : ''}</dd>
         </dl>
         <Button tag={Link} to="/contract" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}

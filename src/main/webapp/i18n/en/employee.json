@@ -48,7 +48,7 @@
       "salaryType": "Salary Type",
       "hireDate": "Hire Date",
       "enterprise": "Enterprise",
-      "employee": "Employee",
+      "managerEmployee": "Manager Employee",
       "manager": "Manager"
     }
   }

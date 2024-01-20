@@ -62,7 +62,7 @@ export const ContractUpdate = () => {
     const entity = {
       ...contractEntity,
       ...values,
-      manageremployee: employees.find(it => it.id.toString() === values.manageremployee.toString()),
+      employee: employees.find(it => it.id.toString() === values.employee.toString()),
     };
 
     if (isNew) {
@@ -84,7 +84,7 @@ export const ContractUpdate = () => {
           ...contractEntity,
           entryDate: convertDateTimeFromServer(contractEntity.entryDate),
           releaseDate: convertDateTimeFromServer(contractEntity.releaseDate),
-          manageremployee: contractEntity?.manageremployee?.id,
+          employee: contractEntity?.employee?.id,
         };
 
   return (
@@ -169,10 +169,10 @@ export const ContractUpdate = () => {
                 }}
               />
               <ValidatedField
-                id="contract-manageremployee"
-                name="manageremployee"
-                data-cy="manageremployee"
-                label={translate('axcrmApp.contract.manageremployee')}
+                id="contract-employee"
+                name="employee"
+                data-cy="employee"
+                label={translate('axcrmApp.contract.employee')}
                 type="select"
               >
                 <option value="" key="0" />

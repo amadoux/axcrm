@@ -151,13 +151,13 @@
       "otherEntityField": "email",
       "otherEntityName": "employee",
       "otherEntityRelationshipName": "manager",
-      "relationshipName": "employee",
+      "relationshipName": "managerEmployee",
       "relationshipSide": "left",
       "relationshipType": "many-to-one"
     },
     {
       "otherEntityName": "employee",
-      "otherEntityRelationshipName": "employee",
+      "otherEntityRelationshipName": "managerEmployee",
       "relationshipName": "manager",
       "relationshipSide": "right",
       "relationshipType": "one-to-many"
