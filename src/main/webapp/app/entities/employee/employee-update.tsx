@@ -86,7 +86,7 @@ export const EmployeeUpdate = () => {
       ...employeeEntity,
       ...values,
       enterprise: enterprises.find(it => it.id.toString() === values.enterprise.toString()),
-      employee: employees.find(it => it.id.toString() === values.employee.toString()),
+      managerEmployee: employees.find(it => it.id.toString() === values.managerEmployee.toString()),
     };
 
     if (isNew) {
@@ -119,7 +119,7 @@ export const EmployeeUpdate = () => {
           releaseDate: convertDateTimeFromServer(employeeEntity.releaseDate),
           hireDate: convertDateTimeFromServer(employeeEntity.hireDate),
           enterprise: employeeEntity?.enterprise?.id,
-          employee: employeeEntity?.employee?.id,
+          managerEmployee: employeeEntity?.managerEmployee?.id,
         };
 
   return (
@@ -412,10 +412,10 @@ export const EmployeeUpdate = () => {
                   : null}
               </ValidatedField>
               <ValidatedField
-                id="employee-employee"
-                name="employee"
-                data-cy="employee"
-                label={translate('axcrmApp.employee.employee')}
+                id="employee-managerEmployee"
+                name="managerEmployee"
+                data-cy="managerEmployee"
+                label={translate('axcrmApp.employee.managerEmployee')}
                 type="select"
               >
                 <option value="" key="0" />

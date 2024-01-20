@@ -42,7 +42,7 @@
     {
       "otherEntityField": "email",
       "otherEntityName": "employee",
-      "relationshipName": "manageremployee",
+      "relationshipName": "employee",
       "relationshipSide": "left",
       "relationshipType": "many-to-one"
     }

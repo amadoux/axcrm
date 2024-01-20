@@ -87,7 +87,7 @@ public class EmployeeDTO implements Serializable {
 
     private EnterpriseDTO enterprise;
 
-    private EmployeeDTO employee;
+    private EmployeeDTO managerEmployee;
 
     public Long getId() {
         return id;
@@ -345,12 +345,12 @@ public class EmployeeDTO implements Serializable {
         this.enterprise = enterprise;
     }
 
-    public EmployeeDTO getEmployee() {
-        return employee;
+    public EmployeeDTO getManagerEmployee() {
+        return managerEmployee;
     }
 
-    public void setEmployee(EmployeeDTO employee) {
-        this.employee = employee;
+    public void setManagerEmployee(EmployeeDTO managerEmployee) {
+        this.managerEmployee = managerEmployee;
     }
 
     @Override
@@ -409,7 +409,7 @@ public class EmployeeDTO implements Serializable {
             ", salaryType='" + getSalaryType() + "'" +
             ", hireDate='" + getHireDate() + "'" +
             ", enterprise=" + getEnterprise() +
-            ", employee=" + getEmployee() +
+            ", managerEmployee=" + getManagerEmployee() +
             "}";
     }
 }

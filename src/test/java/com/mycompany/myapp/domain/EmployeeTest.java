@@ -39,15 +39,15 @@ class EmployeeTest {
     }
 
     @Test
-    void employeeTest() throws Exception {
+    void managerEmployeeTest() throws Exception {
         Employee employee = getEmployeeRandomSampleGenerator();
         Employee employeeBack = getEmployeeRandomSampleGenerator();
 
-        employee.setEmployee(employeeBack);
-        assertThat(employee.getEmployee()).isEqualTo(employeeBack);
+        employee.setManagerEmployee(employeeBack);
+        assertThat(employee.getManagerEmployee()).isEqualTo(employeeBack);
 
-        employee.employee(null);
-        assertThat(employee.getEmployee()).isNull();
+        employee.managerEmployee(null);
+        assertThat(employee.getManagerEmployee()).isNull();
     }
 
     @Test
@@ -57,18 +57,18 @@ class EmployeeTest {
 
         employee.addManager(employeeBack);
         assertThat(employee.getManagers()).containsOnly(employeeBack);
-        assertThat(employeeBack.getEmployee()).isEqualTo(employee);
+        assertThat(employeeBack.getManagerEmployee()).isEqualTo(employee);
 
         employee.removeManager(employeeBack);
         assertThat(employee.getManagers()).doesNotContain(employeeBack);
-        assertThat(employeeBack.getEmployee()).isNull();
+        assertThat(employeeBack.getManagerEmployee()).isNull();
 
         employee.managers(new HashSet<>(Set.of(employeeBack)));
         assertThat(employee.getManagers()).containsOnly(employeeBack);
-        assertThat(employeeBack.getEmployee()).isEqualTo(employee);
+        assertThat(employeeBack.getManagerEmployee()).isEqualTo(employee);
 
         employee.setManagers(new HashSet<>());
         assertThat(employee.getManagers()).doesNotContain(employeeBack);
-        assertThat(employeeBack.getEmployee()).isNull();
+        assertThat(employeeBack.getManagerEmployee()).isNull();
     }
 }

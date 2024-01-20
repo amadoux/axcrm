@@ -40,7 +40,7 @@ export interface IEmployee {
   salaryType?: keyof typeof SalaryType | null;
   hireDate?: dayjs.Dayjs | null;
   enterprise?: IEnterprise | null;
-  employee?: IEmployee | null;
+  managerEmployee?: IEmployee | null;
   managers?: IEmployee[] | null;
 }
 

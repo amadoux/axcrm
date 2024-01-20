@@ -47,7 +47,7 @@ public class Absence implements Serializable {
     private Long congeRestant;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "enterprise", "managerEmployee", "managers" }, allowSetters = true)
     private Employee employee;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

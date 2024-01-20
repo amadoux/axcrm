@@ -47,7 +47,7 @@ public class SocialCharges implements Serializable {
     private String commentText;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "enterprise", "employee", "managers" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "enterprise", "managerEmployee", "managers" }, allowSetters = true)
     private Employee responsableDepense;
 
     @ManyToOne(fetch = FetchType.LAZY)

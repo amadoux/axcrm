@@ -234,7 +234,7 @@ export const Employee = () => {
                   <Translate contentKey="axcrmApp.employee.enterprise">Enterprise</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th>
-                  <Translate contentKey="axcrmApp.employee.employee">Employee</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="axcrmApp.employee.managerEmployee">Manager Employee</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -307,7 +307,13 @@ export const Employee = () => {
                   <td>
                     {employee.enterprise ? <Link to={`/enterprise/${employee.enterprise.id}`}>{employee.enterprise.companyName}</Link> : ''}
                   </td>
-                  <td>{employee.employee ? <Link to={`/employee/${employee.employee.id}`}>{employee.employee.email}</Link> : ''}</td>
+                  <td>
+                    {employee.managerEmployee ? (
+                      <Link to={`/employee/${employee.managerEmployee.id}`}>{employee.managerEmployee.email}</Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/employee/${employee.id}`} color="info" size="sm" data-cy="entityDetailsButton">
