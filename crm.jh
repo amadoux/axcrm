@@ -149,11 +149,11 @@ relationship ManyToOne {
 SocialCharges {enterprise(companyName)} to Enterprise
 Absence {employee(email)} to Employee
 PaySlip {employee(email)} to Employee
-Contract {Manageremployee(email)} to Employee   
+Contract {employee(email)} to Employee   
 Employee{enterprise(companyName)} to Enterprise
 }
 relationship ManyToOne {
- Employee{employee(email)} to Employee {manager}
+ Employee{ManagerEmployee(email)} to Employee {manager}
  
 }
 
