@@ -24,14 +24,14 @@ class ContractTest {
     }
 
     @Test
-    void employeeTest() throws Exception {
+    void manageremployeeTest() throws Exception {
         Contract contract = getContractRandomSampleGenerator();
         Employee employeeBack = getEmployeeRandomSampleGenerator();
 
-        contract.setEmployee(employeeBack);
-        assertThat(contract.getEmployee()).isEqualTo(employeeBack);
+        contract.setManageremployee(employeeBack);
+        assertThat(contract.getManageremployee()).isEqualTo(employeeBack);
 
-        contract.employee(null);
-        assertThat(contract.getEmployee()).isNull();
+        contract.manageremployee(null);
+        assertThat(contract.getManageremployee()).isNull();
     }
 }
