@@ -42,9 +42,6 @@ public class SocialCharges implements Serializable {
     @Column(name = "amount", nullable = false)
     private Long amount;
 
-    @Column(name = "purchase_manager")
-    private String purchaseManager;
-
     @Lob
     @Column(name = "comment_text", nullable = false)
     private String commentText;
@@ -123,19 +120,6 @@ public class SocialCharges implements Serializable {
         this.amount = amount;
     }
 
-    public String getPurchaseManager() {
-        return this.purchaseManager;
-    }
-
-    public SocialCharges purchaseManager(String purchaseManager) {
-        this.setPurchaseManager(purchaseManager);
-        return this;
-    }
-
-    public void setPurchaseManager(String purchaseManager) {
-        this.purchaseManager = purchaseManager;
-    }
-
     public String getCommentText() {
         return this.commentText;
     }
@@ -203,7 +187,6 @@ public class SocialCharges implements Serializable {
             ", spentType='" + getSpentType() + "'" +
             ", statusCharges='" + getStatusCharges() + "'" +
             ", amount=" + getAmount() +
-            ", purchaseManager='" + getPurchaseManager() + "'" +
             ", commentText='" + getCommentText() + "'" +
             "}";
     }

@@ -27,8 +27,6 @@ public class SocialChargesDTO implements Serializable {
     @NotNull
     private Long amount;
 
-    private String purchaseManager;
-
     @Lob
     private String commentText;
 
@@ -74,14 +72,6 @@ public class SocialChargesDTO implements Serializable {
 
     public void setAmount(Long amount) {
         this.amount = amount;
-    }
-
-    public String getPurchaseManager() {
-        return purchaseManager;
-    }
-
-    public void setPurchaseManager(String purchaseManager) {
-        this.purchaseManager = purchaseManager;
     }
 
     public String getCommentText() {
@@ -138,7 +128,6 @@ public class SocialChargesDTO implements Serializable {
             ", spentType='" + getSpentType() + "'" +
             ", statusCharges='" + getStatusCharges() + "'" +
             ", amount=" + getAmount() +
-            ", purchaseManager='" + getPurchaseManager() + "'" +
             ", commentText='" + getCommentText() + "'" +
             ", responsableDepense=" + getResponsableDepense() +
             ", enterprise=" + getEnterprise() +

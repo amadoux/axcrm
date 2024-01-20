@@ -108,7 +108,6 @@ entity SocialCharges {
     spentType SPentType
     statusCharges StatusCharges
     amount Long required
-    purchaseManager String
     commentText TextBlob required
 
 }

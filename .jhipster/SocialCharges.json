@@ -27,10 +27,6 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "purchaseManager",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "commentText",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "text",
